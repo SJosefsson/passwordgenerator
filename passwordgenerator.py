@@ -1,7 +1,7 @@
 import string, random
 
 map = list(string.ascii_letters)
-map.append('-',)
+map.append('-')
 map.append('_')
 
 passlength = int(input('How many characters do you want in your password? '))
