@@ -5,8 +5,6 @@ map.append('-')
 map.append('_')
 map.extend(range(10))
 
-print(map)
-
 passlength = int(input('How many characters do you want in your password? '))
 password = ''
 
