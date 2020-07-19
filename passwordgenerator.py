@@ -4,7 +4,7 @@ import string
 
 class PasswordGenerator:
     def __init__(self, password_length):
-        self.string = string.printable[:62]   # Getting number, uppercase and lowercase
+        self.string = string.printable[:62] + '-_'   # Getting number, uppercase and lowercase
         self.password_length = password_length
 
     def generate(self):
