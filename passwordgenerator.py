@@ -8,14 +8,18 @@ def main():
     chars = list(string.ascii_letters + string.digits
     + '-' + '_' + '!' + '?' + '#' + '+' + '=' + '/' + '*' + '^'
     + '£' + '$' + '%' + '&' + '(' + '[' + '{' + ')' + ']' + '}')
+
+    # If user called the program from command shell with an argument
+    # Jump directly to password_creation without prompting an input
+    # Otherwise call user_input before password_creation to get passlength
     if len(sys.argv) > 1:
         try:
             password_creation(chars, int(sys.argv[1]))
+            sys.exit()
         except ValueError:
-            sys.exit('You need to enter a digit as argument!')
-    else:
-        passlength = user_input()
-        password_creation(chars, passlength)
+            print('You need to enter a digit as argument!')
+    passlength = user_input()
+    password_creation(chars, passlength)
 
 def user_input():
     # Asking user how long they want their password to be
