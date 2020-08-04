@@ -9,20 +9,21 @@ def main():
     + '-' + '_' + '!' + '?' + '#' + '+' + '=' + '/' + '*' + '^'
     + '£' + '$' + '%' + '&' + '(' + '[' + '{' + ')' + ']' + '}')
 
-    # If user called the program from command shell with an argument
-    # Jump directly to password_creation without prompting an input
-    # Otherwise call user_input before password_creation to get passlength
-    if len(sys.argv) > 1:
-        try:
-            password_creation(chars, int(sys.argv[1]))
-            sys.exit()
-        except ValueError:
-            print('You need to enter a digit as argument!')
-    passlength = user_input()
-    password_creation(chars, passlength)
+    # Call password_creation with chars and user_input as arguments
+    password_creation(chars, user_input())
 
 def user_input():
-    # Asking user how long they want their password to be
+    # If user called the program from command shell with an argument
+    # Check if argument is valid (int), and return it
+    # If argument is not valid exit program with an error.
+    if len(sys.argv) > 1:
+        try:
+            return int(sys.argv[1])
+        except ValueError:
+            sys.exit('Error: You need to input an integer as argument!')
+
+    # If user did not call the program from command shell with an argument
+    # Ask user how long they want their password to be
     while True:
         try:
             passlength = int(input(
