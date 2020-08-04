@@ -5,9 +5,7 @@ import sys
 def main():
     # Creating a list of all the characters that can be used when
     # generating the password
-    chars = list(string.ascii_letters + string.digits
-    + '-' + '_' + '!' + '?' + '#' + '+' + '=' + '/' + '*' + '^'
-    + '£' + '$' + '%' + '&' + '(' + '[' + '{' + ')' + ']' + '}')
+    chars = list(string.ascii_letters + string.digits + string.punctuation)
 
     # Call password_creation with chars and user_input as arguments
     password_creation(chars, user_input())
@@ -20,7 +18,7 @@ def user_input():
         try:
             return int(sys.argv[1])
         except ValueError:
-            sys.exit('Error: You need to input an integer as argument!')
+            sys.exit('Error: You need to pass an integer as argument!')
 
     # If user did not call the program from command shell with an argument
     # Ask user how long they want their password to be
