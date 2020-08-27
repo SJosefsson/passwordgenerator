@@ -2,18 +2,22 @@ import string
 import secrets
 import sys
 
-def main():
-    # Creating a list of all the characters that can be used when
-    # generating the password
-    chars = list(string.ascii_letters + string.digits + string.punctuation)
 
-    # Call password_creation with chars and user_input as arguments
-    password_creation(chars, user_input())
+def main():
+    '''Generates a password with a length that the user inputs'''
+    
+    # Creating a list of chars to use when generating the password
+    chars = list(string.printable[:94])
+
+    # Creates the password with chars and user_input() as arguments
+    print(''.join(secrets.choice(chars) for _ in range(user_input())))
+
 
 def user_input():
+    '''Asks user how long they want their password to be'''
+
     # If user called the program from command shell with an argument
-    # Check if argument is valid (int), and return it
-    # If argument is not valid exit program with an error.
+    # Make sure it's an int or throw an error
     if len(sys.argv) > 1:
         try:
             return int(sys.argv[1])
@@ -26,17 +30,10 @@ def user_input():
         try:
             passlength = int(input(
                 'How many characters do you want in your password? '))
-            break
+            return passlength
         except ValueError:
             print('Please input an integer')
-    return passlength
 
-def password_creation(chars, passlength):
-    # Creating the password
-    password = ''.join(secrets.choice(chars) for _ in range(passlength))
-
-    # Printing password so it can be copied
-    print(password)
 
 if __name__ == '__main__':
     main()
