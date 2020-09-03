@@ -16,7 +16,7 @@ def main():
 def user_input():
     '''Asks user how long they want their password to be'''
 
-    # If user called the program from command shell with an argument
+    # If user called the program from terminal window with an argument
     # Make sure it's an int or throw an error
     if len(sys.argv) > 1:
         try:
@@ -24,7 +24,7 @@ def user_input():
         except ValueError:
             sys.exit('Error: You need to pass an integer as argument!')
 
-    # If user did not call the program from command shell with an argument
+    # If user did not call the program from terminal window with an argument
     # Ask user how long they want their password to be
     while True:
         try:
